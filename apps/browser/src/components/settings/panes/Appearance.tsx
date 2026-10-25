@@ -5,7 +5,7 @@ import { useBrowser } from "../../../store/browser";
 import { tabLayoutOf } from "../../../store/model";
 import type { Settings } from "../../../store/settings";
 import { useHover } from "../../primitives";
-import { Group, PopUp, Row, SectionHeader, useFormColors } from "../controls";
+import { Group, PopUp, Row, SectionHeader, Toggle, useFormColors } from "../controls";
 import { APP_ICON_SIZE, appIconChoices } from "../paneData";
 import { store, useResource } from "../resources";
 
@@ -30,6 +30,7 @@ export function AppearancePane() {
         ))}
       </View>
       <AddressBarPicker />
+      <BorderlessToggle />
       <AppIconPicker />
     </View>
   );
@@ -68,6 +69,19 @@ function AddressBarPicker() {
         </Row>
       </Group>
     </>
+  );
+}
+
+function BorderlessToggle() {
+  const value = useBrowser((s) => s.settings.borderlessWhenSidebarHidden);
+  const topTabs = useBrowser((s) => tabLayoutOf(s) === "top");
+  if (topTabs) return null;
+  return (
+    <Group style={{ marginTop: 14 }}>
+      <Row anchor="appearance.borderlessWhenSidebarHidden">
+        <Toggle value={value} onChange={(v) => useBrowser.getState().updateSettings({ borderlessWhenSidebarHidden: v })} />
+      </Row>
+    </Group>
   );
 }
 

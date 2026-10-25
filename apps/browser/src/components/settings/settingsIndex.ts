@@ -228,6 +228,11 @@ const ROWS: Record<SettingsPane, Section[]> = {
           description: "In the centre, ⌘L and a click on the address show it over the middle of the page, as in Arc.",
           keywords: ["cmd l", "command bar", "centred", "centered", "arc", "url bar", "location bar"],
         },
+        borderlessWhenSidebarHidden: {
+          title: "Borderless when sidebar is hidden",
+          description: "While the sidebar is hidden, the page fills the window edge to edge, with no border around it.",
+          keywords: ["edge to edge", "full bleed", "border", "margin", "inset", "rounded corners", "hide sidebar"],
+        },
       },
     },
     { section: "App Icon", rows: { appIcon: { title: "App Icon", description: "Shown in the Dock and the app switcher. The Dock keeps it after you quit.", keywords: ["dock icon", "logo"] } } },
